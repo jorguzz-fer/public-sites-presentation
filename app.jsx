@@ -34,6 +34,46 @@ const CheckIcon = () =>
     <path d="M2.5 6L5 8.5L9.5 3.5" stroke="#1a0f08" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>;
 
+const SunIcon = () =>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="4.2" />
+    <path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7" />
+  </svg>;
+
+const MoonIcon = () =>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 14.6A8 8 0 0 1 9.4 4 6.5 6.5 0 1 0 20 14.6z" />
+  </svg>;
+
+// ─── theme toggle (Dark ↔ Light) ───────────────────────────────
+function ThemeToggle() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem("gm-theme");
+      if (saved === "light" || saved === "dark") return saved;
+    } catch (e) {}
+    return document.body.classList.contains("theme-light") ? "light" : "dark";
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle("theme-light", theme === "light");
+    document.body.classList.toggle("theme-dark", theme === "dark");
+    try { localStorage.setItem("gm-theme", theme); } catch (e) {}
+  }, [theme]);
+
+  const isLight = theme === "light";
+  return (
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+      aria-label={isLight ? "Ativar tema escuro" : "Ativar tema claro"}
+      title={isLight ? "Tema escuro" : "Tema claro"}>
+      {isLight ? <MoonIcon /> : <SunIcon />}
+    </button>);
+
+}
+
 
 // ─── shared CTA component ──────────────────────────────────────
 function CtaButton({ ctaCopy, large = false, ghost = false, label }) {
@@ -80,9 +120,12 @@ function Nav({ ctaCopy }) {
           <a href="#oferta">Mentoria</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="nav-cta">
-          Solicitar reunião <ArrowUR size={12} />
-        </a>
+        <div className="nav-actions">
+          <ThemeToggle />
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="nav-cta">
+            Solicitar reunião <ArrowUR size={12} />
+          </a>
+        </div>
       </div>
     </header>);
 

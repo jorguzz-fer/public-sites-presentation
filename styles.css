@@ -11,6 +11,11 @@
   --bg-3: #1c1c22;
   --bg-warm: #14100d;
 
+  /* Surface helpers (themable — overridden by .theme-light) */
+  --nav-bg: linear-gradient(180deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.7) 100%);
+  --inset-panel: rgba(0,0,0,0.25);
+  --inset-panel-strong: rgba(0,0,0,0.35);
+
   /* Borders */
   --line: rgba(255, 245, 230, 0.07);
   --line-strong: rgba(255, 245, 230, 0.14);
@@ -51,7 +56,7 @@
   --container: 1240px;
   --container-narrow: 920px;
   --gutter: clamp(20px, 4vw, 48px);
-  --section-pad: clamp(80px, 9vw, 140px);
+  --section-pad: clamp(96px, 10vw, 160px);
   --radius-sm: 6px;
   --radius: 12px;
   --radius-lg: 20px;
@@ -61,7 +66,7 @@
 html, body { background: var(--bg-deep); color: var(--ink-1); font-family: var(--font-sans); }
 body {
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -128,18 +133,18 @@ body::before {
 }
 
 .lead {
-  font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.5;
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.6;
   color: var(--ink-2);
   text-wrap: pretty;
-  max-width: 60ch;
+  max-width: 62ch;
 }
 
 .copy {
   color: var(--ink-2);
   text-wrap: pretty;
 }
-.copy p + p { margin-top: 1em; }
+.copy p + p { margin-top: 1.3em; }
 
 .italic-serif { font-family: var(--font-display); font-style: italic; }
 .brand-grad {
@@ -168,8 +173,8 @@ body::before {
 .section-head {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-bottom: clamp(48px, 6vw, 80px);
+  gap: 22px;
+  margin-bottom: clamp(56px, 7vw, 96px);
 }
 .section-head .lead { margin-top: 4px; }
 
@@ -187,7 +192,7 @@ hr.divider {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: linear-gradient(180deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.7) 100%);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--line);
@@ -404,11 +409,11 @@ hr.divider {
   margin-top: 6px;
 }
 .hero-sub {
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.55;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.62;
   color: var(--ink-2);
-  max-width: 52ch;
-  margin-bottom: 40px;
+  max-width: 54ch;
+  margin-bottom: 44px;
   text-wrap: pretty;
 }
 
@@ -541,14 +546,14 @@ hr.divider {
 }
 .proposta-grid p {
   font-size: clamp(20px, 1.7vw, 26px);
-  line-height: 1.4;
+  line-height: 1.46;
   color: var(--ink-1);
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.005em;
   text-wrap: pretty;
 }
-.proposta-grid p + p { margin-top: 28px; }
+.proposta-grid p + p { margin-top: 34px; }
 .proposta-grid p .dim { color: var(--ink-3); }
 .proposta-grid p .em {
   color: var(--copper);
@@ -573,12 +578,12 @@ hr.divider {
   border-left: 1px solid var(--line);
 }
 .pain-item {
-  padding: 32px 36px;
+  padding: 38px 40px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   background: var(--bg-1);
   transition: background 0.25s ease;
   position: relative;
@@ -593,7 +598,7 @@ hr.divider {
 .pain-item p {
   font-family: var(--font-display);
   font-size: 21px;
-  line-height: 1.3;
+  line-height: 1.38;
   color: var(--ink-1);
   text-wrap: pretty;
 }
@@ -606,8 +611,8 @@ hr.divider {
 }
 
 .pain-verdict {
-  margin-top: 56px;
-  padding: 40px;
+  margin-top: 64px;
+  padding: 44px;
   border: 1px solid var(--line-copper);
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(212,157,114,0.04), rgba(124,63,127,0.04));
@@ -670,8 +675,8 @@ hr.divider {
   align-items: start;
 }
 .solution-grid .copy p {
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 17.5px;
+  line-height: 1.7;
   color: var(--ink-2);
 }
 .solution-grid .copy strong {
@@ -689,7 +694,7 @@ hr.divider {
   background: var(--bg-1);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -715,7 +720,7 @@ hr.divider {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 26px;
   position: relative;
 }
 .method-step {
@@ -741,9 +746,9 @@ hr.divider {
   margin-bottom: 4px;
 }
 .method-step .step-desc {
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--ink-3);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 @media (max-width: 900px) {
@@ -767,10 +772,10 @@ hr.divider {
 }
 .benefit {
   background: var(--bg-1);
-  padding: 36px 32px;
+  padding: 40px 34px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   transition: background 0.25s ease;
   position: relative;
 }
@@ -799,8 +804,8 @@ hr.divider {
   text-wrap: balance;
 }
 .benefit-desc {
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.62;
   color: var(--ink-3);
   text-wrap: pretty;
 }
@@ -846,9 +851,9 @@ hr.divider {
   color: transparent;
 }
 .proof-number .desc {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink-3);
-  line-height: 1.4;
+  line-height: 1.5;
   margin-top: 4px;
   text-wrap: pretty;
 }
@@ -871,10 +876,10 @@ hr.divider {
   background: var(--bg-deep);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -910,11 +915,11 @@ hr.divider {
   color: transparent;
 }
 .case-card .case-body {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 14.5px;
+  line-height: 1.65;
   color: var(--ink-3);
 }
-.case-card .case-body p + p { margin-top: 10px; }
+.case-card .case-body p + p { margin-top: 12px; }
 .case-card .case-body strong { color: var(--ink-2); font-weight: 500; }
 .case-card .case-quote {
   font-family: var(--font-display);
@@ -1115,8 +1120,8 @@ hr.divider {
 
 .offer-compare {
   margin-top: 28px;
-  padding: 22px 26px;
-  background: rgba(0,0,0,0.25);
+  padding: 24px 28px;
+  background: var(--inset-panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   display: flex;
@@ -1136,8 +1141,8 @@ hr.divider {
   flex-shrink: 0;
 }
 .offer-compare p {
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.62;
   color: var(--ink-2);
   text-wrap: pretty;
 }
@@ -1156,7 +1161,7 @@ hr.divider {
   border-top: 1px solid var(--line);
 }
 .obj-item {
-  padding: 36px 0;
+  padding: 44px 0;
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -1182,10 +1187,10 @@ hr.divider {
 .obj-quote::before { content: "\201C"; color: var(--copper); margin-right: 4px; }
 .obj-quote::after { content: "\201D"; color: var(--copper); margin-left: 2px; }
 .obj-ans {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  line-height: 1.68;
   color: var(--ink-2);
-  max-width: 70ch;
+  max-width: 68ch;
   text-wrap: pretty;
 }
 .obj-ans strong { color: var(--ink-1); font-weight: 500; }
@@ -1270,10 +1275,10 @@ hr.divider {
   text-wrap: balance;
 }
 .guarantee-card .copy p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  line-height: 1.68;
   color: var(--ink-2);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-wrap: pretty;
 }
 .guarantee-card .copy strong { color: var(--ink-1); font-weight: 500; }
@@ -1305,7 +1310,7 @@ hr.divider {
 @media (max-width: 900px) { .urgency-grid { grid-template-columns: 1fr; } }
 
 .vagas-tracker {
-  background: rgba(0,0,0,0.35);
+  background: var(--inset-panel-strong);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
   padding: 36px;
@@ -1410,7 +1415,7 @@ hr.divider {
 .faq-q {
   width: 100%;
   text-align: left;
-  padding: 28px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1454,10 +1459,10 @@ hr.divider {
   transition: max-height 0.4s ease;
 }
 .faq-a-inner {
-  padding: 0 0 32px;
-  max-width: 70ch;
-  font-size: 16px;
-  line-height: 1.6;
+  padding: 0 0 34px;
+  max-width: 68ch;
+  font-size: 16.5px;
+  line-height: 1.68;
   color: var(--ink-2);
   text-wrap: pretty;
 }
@@ -1505,10 +1510,10 @@ hr.divider {
 }
 .final-cta p {
   font-size: clamp(17px, 1.4vw, 20px);
-  line-height: 1.55;
+  line-height: 1.62;
   color: var(--ink-2);
-  max-width: 60ch;
-  margin: 0 auto 40px;
+  max-width: 62ch;
+  margin: 0 auto 44px;
   text-wrap: pretty;
 }
 .final-cta .ctas {
@@ -1545,9 +1550,9 @@ hr.divider {
 }
 .ps-body p {
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.68;
   color: var(--ink-2);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   text-wrap: pretty;
 }
 .ps-body p:last-child {
@@ -1625,3 +1630,93 @@ body.palette-vet .faq-item.open .faq-q .ic::before { background: #08140d; }
    ============================================================ */
 ::selection { background: var(--copper); color: #1a0f08; }
 body.palette-vet ::selection { background: var(--copper); color: #08140d; }
+
+/* ============================================================
+   Light theme  (Dark ↔ Light toggle)
+   Keeps the green brand + layout; only surfaces, ink and a few
+   contrast-sensitive accents are re-tuned for a light background.
+   ============================================================ */
+body.theme-light {
+  --bg-deep: #eceee8;
+  --bg-1: #f8f9f5;
+  --bg-2: #ffffff;
+  --bg-3: #ffffff;
+  --bg-warm: #eef3ed;
+
+  --line: rgba(22, 38, 28, 0.10);
+  --line-strong: rgba(22, 38, 28, 0.16);
+
+  --ink-1: #15201a;
+  --ink-2: #313b34;
+  --ink-3: #586159;
+  --ink-4: #99a29b;
+
+  /* same green hue, nudged darker so small labels/text stay legible on light */
+  --copper: #3a7d5b;
+  --copper-bright: #4f8f68;
+  --copper-deep: #2d5a44;
+  --line-copper: rgba(58, 125, 91, 0.32);
+
+  --nav-bg: linear-gradient(180deg, rgba(248,249,245,0.92) 0%, rgba(248,249,245,0.70) 100%);
+  --inset-panel: rgba(22, 38, 28, 0.035);
+  --inset-panel-strong: rgba(22, 38, 28, 0.05);
+
+  --sh-card: 0 1px 0 rgba(255,255,255,0.7) inset, 0 24px 50px -26px rgba(22,38,28,0.18);
+}
+
+/* Brand gradient used as TEXT needs a darker green on a light background
+   (the bright button gradient is kept as-is for the filled CTAs). */
+body.theme-light .brand-grad,
+body.theme-light .hero h1 em,
+body.theme-light .hero-stat .val .accent,
+body.theme-light .method-step .step-num,
+body.theme-light .benefit-num,
+body.theme-light .proof-number .big .sym,
+body.theme-light .case-card .case-headline strong,
+body.theme-light .case-metric .v,
+body.theme-light .offer-price-value .amount,
+body.theme-light .guarantee-card .seal-content .main,
+body.theme-light .pain-verdict p strong,
+body.theme-light .ps-label,
+body.theme-light .final-cta h2 .accent,
+body.theme-light .vagas-stat.open .v {
+  background: linear-gradient(90deg, #3a7d5b 0%, #2c6347 50%, #224d37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Mentor caption sits on a dark-faded photo — keep it light in both themes */
+body.theme-light .mentor-caption .who { color: #f5f1ea; }
+body.theme-light .mentor-caption .role { color: #9ad0b0; }
+body.theme-light .mentor-caption .meta { color: rgba(245, 241, 234, 0.72); }
+
+body.theme-light ::selection { background: var(--copper); color: #ffffff; }
+
+/* ============================================================
+   Theme toggle
+   ============================================================ */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  background: rgba(127, 127, 127, 0.05);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  color: var(--ink-1);
+  border-color: var(--copper);
+  background: rgba(127, 127, 127, 0.10);
+}
+.theme-toggle svg { width: 17px; height: 17px; display: block; }

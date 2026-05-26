@@ -17,6 +17,17 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body class="palette-vet">
+<script>
+  // Apply saved theme before React mounts to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem("gm-theme");
+      document.body.classList.add("theme-" + (t === "light" ? "light" : "dark"));
+    } catch (e) {
+      document.body.classList.add("theme-dark");
+    }
+  })();
+</script>
 <div id="root"></div>
 
 <script type="text/babel" src="tweaks-panel.jsx"></script>
